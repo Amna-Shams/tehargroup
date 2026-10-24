@@ -30,11 +30,10 @@ export function Header() {
       <div className="hidden bg-brand-950 text-xs text-brand-100 md:block">
         <div className="container-x flex h-8 items-center justify-between">
           <span>{site.tagline}</span>
-          <span className="flex items-center gap-4">
-            {site.phones.map((p) => (
-              <a key={p.tel} href={`tel:${p.tel}`} className="inline-flex items-center gap-1.5 hover:text-white">
-                <Phone className="h-3 w-3" aria-hidden /> {p.display}
-              </a>
+          <span className="inline-flex items-center gap-2">
+            <Phone className="h-3 w-3" aria-hidden />
+            {site.phones.map((p, i) => (
+              <span key={p.tel}>{i > 0 && <span className="mr-2 text-brand-300" aria-hidden>·</span>}<a href={`tel:${p.tel}`} className="hover:text-white">{p.display}</a></span>
             ))}
           </span>
         </div>
@@ -107,9 +106,12 @@ export function Header() {
               ),
             )}
             <Link href="/contact" className="btn-primary mt-4">Get a quote</Link>
-            {site.phones.map((p) => (
-              <a key={p.tel} href={`tel:${p.tel}`} className="btn-outline mt-2"><Phone className="h-4 w-4" /> {p.display} ({p.label})</a>
-            ))}
+            <div className="mt-2 flex items-center gap-3 rounded-2xl border border-brand-700/30 px-5 py-3 text-sm font-semibold text-brand-800">
+              <Phone className="h-4 w-4 shrink-0" aria-hidden />
+              <span className="flex flex-col gap-1">
+                {site.phones.map((p) => <a key={p.tel} href={`tel:${p.tel}`}>{p.display} <span className="font-normal text-muted">({p.label})</span></a>)}
+              </span>
+            </div>
           </nav>
         </div>
       )}

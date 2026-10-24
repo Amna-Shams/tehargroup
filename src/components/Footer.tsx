@@ -21,9 +21,11 @@ export function Footer() {
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-brand-200">{site.description}</p>
           <ul className="mt-6 space-y-2.5 text-sm">
             <li className="flex gap-2.5"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-400" aria-hidden />{site.address}</li>
-            {site.phones.map((p) => (
-              <li key={p.tel} className="flex gap-2.5"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold-400" aria-hidden /><a href={`tel:${p.tel}`} className="hover:text-white">{p.display} <span className="text-brand-300">({p.label})</span></a></li>
-            ))}
+            <li className="flex gap-2.5"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold-400" aria-hidden />
+              <span className="flex flex-col gap-1">
+                {site.phones.map((p) => <a key={p.tel} href={`tel:${p.tel}`} className="hover:text-white">{p.display} <span className="text-brand-300">({p.label})</span></a>)}
+              </span>
+            </li>
             <li className="flex gap-2.5"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold-400" aria-hidden /><a href={`mailto:${site.email}`} className="hover:text-white">{site.email}</a></li>
             <li className="flex gap-2.5"><Clock className="mt-0.5 h-4 w-4 shrink-0 text-gold-400" aria-hidden />{site.hours}</li>
           </ul>

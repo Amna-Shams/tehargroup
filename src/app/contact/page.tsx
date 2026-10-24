@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const items = [
-  ...site.phones.map((p) => ({ icon: Phone, label: `Phone (${p.label})`, value: p.display, href: `tel:${p.tel}` })),
+  { icon: Phone, label: "Phone", phones: site.phones },
   { icon: MessageCircle, label: "WhatsApp", value: "Chat with us", href: whatsappLink() },
   { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
   { icon: MapPin, label: "Address", value: site.address },
@@ -31,7 +31,7 @@ export default function Page() {
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-100 text-brand-700"><i.icon className="h-5 w-5" aria-hidden /></span>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted">{i.label}</p>
-                  {i.href ? <a href={i.href} className="font-medium hover:text-brand-700" {...(i.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{i.value}</a> : <p className="font-medium">{i.value}</p>}
+                  {i.phones ? <div className="flex flex-col">{i.phones.map((p) => <a key={p.tel} href={`tel:${p.tel}`} className="font-medium hover:text-brand-700">{p.display} <span className="text-xs text-muted">({p.label})</span></a>)}</div> : i.href ? <a href={i.href} className="font-medium hover:text-brand-700" {...(i.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{i.value}</a> : <p className="font-medium">{i.value}</p>}
                 </div>
               </li>
             ))}
