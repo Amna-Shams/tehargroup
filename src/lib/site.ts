@@ -9,7 +9,7 @@ export const site = {
   // TODO: real contact details (digits only for WhatsApp, with country code)
   whatsapp: "923000000000",
   phone: "+92 300 0000000",
-  email: "info@tehargroup.com",
+  email: "sales@tehargroup.com",
   address: "Head Office, Pakistan", // TODO
   hours: "Mon – Sat, 9:00 am – 6:00 pm (PKT)",
 } as const;
