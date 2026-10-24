@@ -1,69 +1,113 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Sprout, Network, Shirt, ShieldCheck, BadgePercent, Truck, MessageCircle } from "lucide-react";
+import { Section, ProcessSteps, Testimonials, Stats, CtaBand } from "@/components/ui";
+import { Photo } from "@/components/PhotoPlaceholder";
+import { InquiryForm } from "@/components/InquiryForm";
+import { posts } from "@/lib/data";
+import { whatsappLink } from "@/lib/site";
+
+const divisions = [
+  { href: "/agri-trading", title: "Agri Trading", text: "Hybrid seeds tested at our own farm — low cost, high yield.", icon: Sprout, photo: "field" as const, color: "bg-brand-600" },
+  { href: "/it-electronics", title: "IT & Electronics", text: "Switches, routers and networking gear for every scale.", icon: Network, photo: "network" as const, color: "bg-tech-600" },
+  { href: "/fabric", title: "Fabric Trading", text: "Wholesale cotton, linen, synthetics and winter fabrics.", icon: Shirt, photo: "fabric" as const, color: "bg-fabric-600" },
+];
+
+const reasons = [
+  { icon: ShieldCheck, title: "Tested, not promised", text: "Our seed claims come from our own trial plots." },
+  { icon: BadgePercent, title: "Honest pricing", text: "Clear quotations, bulk and reseller rates." },
+  { icon: Truck, title: "Nationwide supply", text: "Dispatch across Pakistan with clear timelines." },
+  { icon: MessageCircle, title: "Fast response", text: "Talk to a real person on phone or WhatsApp." },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <section className="relative overflow-hidden bg-brand-950 text-white">
+        <div className="absolute inset-0 opacity-40" style={{ background: "radial-gradient(60% 70% at 90% 10%, #2d9a5a 0%, transparent 60%), radial-gradient(40% 50% at 0% 100%, #e89d12 0%, transparent 60%)" }} aria-hidden />
+        <div className="container-x relative grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-2">
+          <div>
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-brand-100">
+              <span className="h-1.5 w-1.5 rounded-full bg-gold-400" /> Pakistani trading company
+            </p>
+            <h1 className="mt-5 text-4xl font-extrabold leading-[1.1] sm:text-5xl lg:text-6xl">
+              Seeds, networks &amp; fabrics — <span className="text-gold-400">traded with trust.</span>
+            </h1>
+            <p className="mt-5 max-w-xl text-lg text-brand-100">
+              Tehar Group supplies farm-tested hybrid seeds, IT &amp; networking equipment and quality fabric to customers across Pakistan.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/contact#inquiry" className="btn-gold">Request a quote <ArrowRight className="h-4 w-4" aria-hidden /></Link>
+              <Link href="/farm-testing" className="btn-ghost-light">How we test seed</Link>
+            </div>
+          </div>
+          <Photo kind="field" priority className="aspect-[4/3] rounded-3xl shadow-2xl ring-1 ring-white/20" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <Section className="!pt-10"><Stats /></Section>
+
+      <Section eyebrow="Our divisions" title="Three businesses, one standard of service" text="Browse each catalog and send an inquiry — no checkout, just a straight conversation.">
+        <div className="grid gap-6 md:grid-cols-3">
+          {divisions.map((d) => (
+            <Link key={d.href} href={d.href} className="group overflow-hidden rounded-2xl border border-line bg-white transition hover:-translate-y-1 hover:shadow-xl">
+              <Photo kind={d.photo} className="aspect-[16/10]" />
+              <div className="p-6">
+                <span className={`grid h-11 w-11 place-items-center rounded-xl text-white ${d.color}`}><d.icon className="h-5 w-5" aria-hidden /></span>
+                <h3 className="mt-4 text-xl font-bold">{d.title}</h3>
+                <p className="mt-1.5 text-sm text-muted">{d.text}</p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 transition-all group-hover:gap-2.5">Explore <ArrowRight className="h-4 w-4" aria-hidden /></span>
+              </div>
+            </Link>
+          ))}
         </div>
-      </main>
-    </div>
+      </Section>
+
+      <Section eyebrow="Farm-testing process" title="Every seed is grown at our farm first" text="Our competitive edge: proven low-cost, high-yield hybrids.">
+        <ProcessSteps />
+        <Link href="/farm-testing" className="btn-outline mt-8">Learn more about our farm</Link>
+      </Section>
+
+      <Section eyebrow="Why Tehar" title="Why customers come back">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {reasons.map((r) => (
+            <div key={r.title} className="rounded-2xl border border-line bg-white p-6">
+              <span className="grid h-11 w-11 place-items-center rounded-xl bg-gold-100 text-gold-600"><r.icon className="h-5 w-5" aria-hidden /></span>
+              <h3 className="mt-4 font-bold">{r.title}</h3>
+              <p className="mt-1.5 text-sm text-muted">{r.text}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="Testimonials" title="Trusted by farmers, resellers and retailers">
+        <Testimonials />
+      </Section>
+
+      <Section eyebrow="From the blog" title="Guides &amp; updates">
+        <div className="grid gap-6 md:grid-cols-3">
+          {posts.map((p) => (
+            <Link key={p.slug} href={`/blog/${p.slug}`} className="group overflow-hidden rounded-2xl border border-line bg-white transition hover:shadow-xl">
+              <Photo kind={p.photo} className="aspect-[16/9]" />
+              <div className="p-5">
+                <p className="text-xs font-semibold text-brand-600">{p.category} · {p.readTime}</p>
+                <h3 className="mt-2 font-bold leading-snug group-hover:text-brand-700">{p.title}</h3>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </Section>
+
+      <Section id="inquiry" className="grid gap-10 lg:grid-cols-5">
+        <div className="lg:col-span-2">
+          <p className="eyebrow">Inquiry</p>
+          <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl">Tell us what you need</h2>
+          <p className="mt-3 text-muted">Seeds, networking or fabric — send a quick inquiry and we will get back to you with availability and a quotation.</p>
+          <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn-outline mt-6">Or chat on WhatsApp</a>
+        </div>
+        <div className="lg:col-span-3"><InquiryForm division="Home" compact /></div>
+      </Section>
+
+      <CtaBand />
+    </>
   );
 }
