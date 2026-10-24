@@ -3,7 +3,7 @@ import { PageHero } from "@/components/ui";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Legal — Privacy, Terms & Disclaimer",
+  title: "Legal — Privacy, Terms, Cookies & Disclaimer",
   description: "Privacy policy, terms of use and product disclaimer for Tehar Group (tehargroup.com).",
   alternates: { canonical: "/legal" },
 };
@@ -26,6 +26,14 @@ const sections = [
       "This website is a product catalog and inquiry platform. It does not process online orders or payments. Quotations are provided by our team and are valid for the period stated in each quotation.",
       "Product images are for illustration and may differ from the delivered item. Prices, specifications and availability are subject to change without notice.",
       "All content on this site is the property of Tehar Group and may not be reproduced without written permission.",
+    ],
+  },
+  {
+    id: "cookies",
+    title: "Cookie Policy",
+    body: [
+      "This site uses only the cookies and storage needed to work, plus optional analytics cookies (Google Analytics) that are loaded only if you click Accept on the cookie banner.",
+      "Analytics help us understand which pages are useful. IP addresses are anonymised. You can withdraw consent at any time by clearing this site's data in your browser.",
     ],
   },
   {

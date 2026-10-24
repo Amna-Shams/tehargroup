@@ -4,6 +4,8 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { Analytics } from "@/components/Analytics";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { site } from "@/lib/site";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
@@ -36,8 +38,9 @@ const orgJsonLd = {
   name: site.name,
   url: site.url,
   email: site.email,
-  telephone: site.phone,
+  telephone: site.phones.map((p) => p.tel),
   areaServed: "PK",
+  sameAs: site.social.filter((s) => s.href).map((s) => s.href),
   description: site.description,
 };
 
@@ -50,6 +53,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main id="main" className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <BreadcrumbSchema />
+        <Analytics />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
       </body>
     </html>

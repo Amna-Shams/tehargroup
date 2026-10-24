@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const items = [
-  { icon: Phone, label: "Phone", value: site.phone, href: `tel:${site.phone.replace(/\s/g, "")}` },
+  ...site.phones.map((p) => ({ icon: Phone, label: `Phone (${p.label})`, value: p.display, href: `tel:${p.tel}` })),
   { icon: MessageCircle, label: "WhatsApp", value: "Chat with us", href: whatsappLink() },
   { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
   { icon: MapPin, label: "Address", value: site.address },
@@ -39,6 +39,11 @@ export default function Page() {
         </div>
         <div className="lg:col-span-3"><InquiryForm division="General / Contact" title="Send us a message" /></div>
       </Section>
+      {site.mapQuery && (
+        <Section className="pb-0" title="Find us">
+          <iframe title="Tehar Group location" loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="h-80 w-full rounded-2xl border border-line" src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`} />
+        </Section>
+      )}
     </>
   );
 }

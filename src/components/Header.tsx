@@ -30,9 +30,13 @@ export function Header() {
       <div className="hidden bg-brand-950 text-xs text-brand-100 md:block">
         <div className="container-x flex h-8 items-center justify-between">
           <span>{site.tagline}</span>
-          <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="inline-flex items-center gap-1.5 hover:text-white">
-            <Phone className="h-3 w-3" aria-hidden /> {site.phone}
-          </a>
+          <span className="flex items-center gap-4">
+            {site.phones.map((p) => (
+              <a key={p.tel} href={`tel:${p.tel}`} className="inline-flex items-center gap-1.5 hover:text-white">
+                <Phone className="h-3 w-3" aria-hidden /> {p.display}
+              </a>
+            ))}
+          </span>
         </div>
       </div>
 
@@ -103,7 +107,9 @@ export function Header() {
               ),
             )}
             <Link href="/contact" className="btn-primary mt-4">Get a quote</Link>
-            <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="btn-outline mt-2"><Phone className="h-4 w-4" /> {site.phone}</a>
+            {site.phones.map((p) => (
+              <a key={p.tel} href={`tel:${p.tel}`} className="btn-outline mt-2"><Phone className="h-4 w-4" /> {p.display} ({p.label})</a>
+            ))}
           </nav>
         </div>
       )}

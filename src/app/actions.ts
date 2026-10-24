@@ -40,8 +40,9 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
       console.error("[inquiry] delivery failed", e);
       return { ok: false, message: "We couldn't send your inquiry right now. Please use WhatsApp or call us.", values: data };
     }
-  } else {
-    console.log("[inquiry] (no INQUIRY_WEBHOOK_URL set)", data);
+  } else if (process.env.NODE_ENV === "production") {
+    console.error("[inquiry] INQUIRY_WEBHOOK_URL is not configured; inquiry was not delivered");
+    return { ok: false, message: "Our inquiry form is temporarily unavailable. Please use WhatsApp or call us.", values: data };
   }
 
   return { ok: true, message: "Thank you! Our team will contact you shortly." };

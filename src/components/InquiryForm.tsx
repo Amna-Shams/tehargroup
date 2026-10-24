@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { CheckCircle2, Send } from "lucide-react";
 import { submitInquiry, type InquiryState } from "@/app/actions";
 
@@ -28,6 +28,9 @@ export function InquiryForm({
   compact?: boolean;
 }) {
   const [state, action, pending] = useActionState(submitInquiry, initial);
+  useEffect(() => {
+    if (state.ok) (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.("event", "generate_lead", { division });
+  }, [state.ok, division]);
   const err = state.errors ?? {};
   const v = state.values ?? {};
 

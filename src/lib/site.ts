@@ -7,10 +7,22 @@ export const site = {
   description:
     "Tehar Group is a Pakistani trading company: farm-tested hybrid seeds, IT & networking equipment, and quality fabric — supplied across Pakistan.",
   // TODO: real contact details (digits only for WhatsApp, with country code)
-  whatsapp: "923000000000",
-  phone: "+92 300 0000000",
+  whatsapp: "923356336806",
+  phones: [
+    { label: "Pakistan", display: "+92 335 6336806", tel: "+923356336806" },
+    { label: "UAE", display: "+971 56 403 5030", tel: "+971564035030" },
+  ],
   email: "sales@tehargroup.com",
   address: "Head Office, Pakistan", // TODO
+  // TODO: paste real profile URLs; empty entries are hidden automatically.
+  social: [
+    { label: "Facebook", href: "" },
+    { label: "Instagram", href: "" },
+    { label: "LinkedIn", href: "" },
+    { label: "YouTube", href: "" },
+  ],
+  // TODO: exact address or Google Maps place name; the map is hidden while empty.
+  mapQuery: "",
   hours: "Mon – Sat, 9:00 am – 6:00 pm (PKT)",
 } as const;
 
